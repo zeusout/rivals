@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제1차 지호-윤재 휴전 협정</title>
+    <style>
+        body {
+            font-family: 'Batang', serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            min-height: 100vh;
+            color: #333;
+            transition: all 1s;
+        }
+
+        body.war {
+            background: #500;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border: 2px solid #000;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            transition: all 1s;
+        }
+
+        .container.war {
+            background: #300;
+            border-color: #f00;
+            color: #fff;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 3px double #000;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .war .header {
+            border-bottom-color: #f00;
+        }
+
+        .seal {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #8b0000;
+            border-radius: 50%;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b0000;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 1s;
+        }
+
+        .war .seal {
+            border-color: #f00;
+            color: #f00;
+            transform: rotate(180deg);
+        }
+
+        .article {
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+
+        .signatures {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #000;
+        }
+
+        .war .signatures {
+            border-top-color: #f00;
+        }
+
+        .signature {
+            text-align: center;
+        }
+
+        .date {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .timer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            transition: all 1s;
+        }
+
+        .war .timer {
+            background: #400;
+            border-color: #f00;
+        }
+
+        .control-panel {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .control-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .war-alert {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #f00;
+            color: #fff;
+            padding: 20px;
+            font-size: 2em;
+            z-index: 1000;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .modal input {
+            margin: 10px 0;
+            padding: 5px;
+        }
+
+        .modal button {
+            margin: 5px;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>제1차 지호-윤재 휴전 협정</h1>
+            <div class="seal">公文</div>
+        </div>
+
+        <div class="article">
+            <h2>전문</h2>
+            <p>지호국과 윤재국은 양국 간의 평화와 안정을 위하여 다음과 같이 휴전 협정을 체결한다.</p>
+        </div>
+
+        <div class="article">
+            <h2>제1조 (휴전의 성립)</h2>
+            <p>1. 양국은 본 협정 서명과 동시에 모든 적대행위를 중지한다.</p>
+            <p>2. 휴전선은 현재의 접촉선으로 한다.</p>
+        </div>
+
+        <div class="article">
+            <h2>제2조 (평화 유지 의무)</h2>
+            <p>1. 상호 비방 및 도발행위를 금지한다.</p>
+            <p>2. 분쟁 발생 시 대화로 해결한다.</p>
+        </div>
+
+        <div class="article">
+            <h2>제3조 (교류 협력)</h2>
+            <p>1. 양국은 문화 교류를 증진한다.</p>
+            <p>2. 공동 이익을 위해 협력한다.</p>
+        </div>
+
+        <div class="timer">
+            <h3>휴전 지속 시간</h3>
+            <div id="peacetime"></div>
+        </div>
+
+        <div class="date">
+            서기 2024년 11월 27일
+        </div>
+
+        <div class="signatures">
+            <div class="signature">
+                <p>지호국 대표</p>
+                <p>지호 (인)</p>
+            </div>
+            <div class="signature">
+                <p>윤재국 대표</p>
+                <p>윤재 (인)</p>
+            </div>
+        </div>
+
+        <div class="control-panel">
+            <button class="control-button" onclick="showPasswordPrompt()">시스템 제어</button>
+        </div>
+    </div>
+
+    <div class="war-alert">전쟁 발발!</div>
+
+    <div class="modal">
+        <div class="modal-content">
+            <h3>관리자 인증</h3>
+            <input type="password" id="password-input" placeholder="비밀번호를 입력하세요">
+            <br>
+            <button onclick="checkPassword()">확인</button>
+            <button onclick="closeModal()">취소</button>
+        </div>
+    </div>
+
+    <script>
+        function updatePeaceTime() {
+            const startDate = new Date('2024-11-27T00:00:00');
+            const now = new Date();
+            
+            const diff = now - startDate;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            
+            document.getElementById('peacetime').innerHTML = 
+                `휴전 ${days}일 ${hours}시간 ${minutes}분 경과`;
+        }
+
+        function showPasswordPrompt() {
+            document.querySelector('.modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.querySelector('.modal').style.display = 'none';
+            document.getElementById('password-input').value = '';
+        }
+
+        function checkPassword() {
+            const password = document.getElementById('password-input').value;
+            if(password === 'a1234') {
+                startWar();
+                closeModal();
+            } else {
+                alert('비밀번호가 틀렸습니다.');
+            }
+        }
+
+        function startWar() {
+            document.body.classList.add('war');
+            document.querySelector('.container').classList.add('war');
+            document.querySelector('.war-alert').style.display = 'block';
+            
+            // 문서 내용 변경
+            document.querySelector('h1').textContent = '지호-윤재 전쟁 선포';
+            document.querySelector('.seal').textContent = '戰';
+            
+            const articles = document.querySelectorAll('.article');
+            articles[0].innerHTML = '<h2>전쟁 선포문</h2><p>지호국과 윤재국은 휴전 협정을 파기하고 전시 상태로 돌입한다.</p>';
+            articles[1].innerHTML = '<h2>제1조 (전쟁 선포)</h2><p>1. 모든 평화 협정을 즉시 무효화한다.</p><p>2. 양국은 전시 체제로 전환한다.</p>';
+            articles[2].innerHTML = '<h2>제2조 (전투 개시)</h2><p>1. 즉시 모든 전선에서 전투를 개시한다.</p><p>2. 모든 외교적 수단을 중단한다.</p>';
+            
+            // 타이머 텍스트 변경
+            document.querySelector('.timer h3').textContent = '전쟁 지속 시간';
+            startWarTimer();
+        }
+
+        function startWarTimer() {
+            const warStart = new Date();
+            setInterval(() => {
+                const now = new Date();
+                const diff = now - warStart;
+                const minutes = Math.floor(diff / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                document.getElementById('peacetime').innerHTML = 
+                    `전쟁 발발 후 ${minutes}분 ${seconds}초 경과`;
+            }, 1000);
+        }
+
+        updatePeaceTime();
+        setInterval(updatePeaceTime, 60000); // 1분마다 업데이트
+    </script>
+</body>
+</html>
